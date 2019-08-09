@@ -2,7 +2,7 @@
 
 ## 0주차(Prequel)
 #### 1. 기술스택, 어디까지 알고 있니?
-react, vue, angular, ECMA Script, npm, webpack, babel, PWA, node, express, koa, python, django, flask, java, spring, spring security, mvc, webflux, jpa, RDBMS, NoSQL, mongoDB, cassandra, graphDB, memcached, redis, nginx, apache, swagger, REST, graphQL, jenkins, docker
+react, vue, angular, ECMA Script, npm, webpack, babel, PWA, node, express, koa, python, django, flask, java, spring, spring-boot, spring security, mvc, webflux, jpa, RDBMS, NoSQL, mongoDB, cassandra, graphDB, memcached, redis, nginx, apache, swagger, REST, graphQL, jenkins, docker
 #### 2. github
 * github 계정 생성
 * first repository 생성
