@@ -53,5 +53,5 @@ react, vue, angular, TypeScript, ECMA Script, npm, webpack, babel, PWA, node, ex
 #### 1. Spring Security
 #### 2. JWT
 * OAuth와의 차이
-#### 3. JWT로 Spring Security 인증
+#### 3. Spring Security + JWT
 
