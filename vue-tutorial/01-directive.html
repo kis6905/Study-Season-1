@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue Tutorial ch01</title>
+
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- v-cloak은 javascript가 실행되기 전에 plain text 값을 노출시키지 않는다. css도 필요 -->
+  <div id="app" v-cloak>
+    <h1>
+      {{name}}<br/>
+      <span v-text="name2"></span><br/>
+      <span v-html="html"></span>
+      <span v-show="visible" v-text="name"></span><br/>
+      
+      <!-- if/else 가 바로 붙어 있어야 함 -->
+      <span v-if="value > 5"> value 가 5보다 큼</span>
+      <span v-else-if="value === 5"> value 가 5임</span>
+      <span v-else> value 가 5보다 작음</span><br/>
+      <span v-pre>{{이건 그냥 렌더링}}</span>
+      <!-- 이건 에러
+      <span>{{이건 그냥 렌더링}}</span>
+      -->
+      
+      <!-- v-once는 컴포넌트를 초기에 딱 한번만 렌더링 -->
+      <h2 v-once>초기 값: {{ value }}</h2>
+      <h2>현재 값: {{ value }}</h2>
+      
+    </h1>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: 'Vue',
+        name2: 'Vue2',
+        html: '<li>item</li>',
+        visible: true,
+        value: 5
+      }
+    })
+  </script>
+
+</body>
+</html>

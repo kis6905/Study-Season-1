@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue Tutorial ch05</title>
+
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="app" v-cloak>
+    <h1>카운터: {{ number }}</h1>
+    <button v-on:click="increment">증가</button>
+    <button v-on:click="decrement">감소</button>
+    
+    <br/><br/>
+    
+    <!-- v-on 을 @로 대체 가능 -->
+    <button @click="increment">증가</button>
+    <button @click="decrement">감소</button>
+  </div>
+  
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+  <script>
+    var app = new Vue({
+      el: '#app', 
+      data: {
+        number: 0
+      },
+      methods: {
+        increment: function() {
+          // 인스턴스 내부의 데이터모델에 접근 할 땐, this 를 사용한다
+          this.number++;
+        },
+        decrement: function() {
+          this.number--;
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

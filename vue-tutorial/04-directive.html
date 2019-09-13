@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue Tutorial ch04</title>
+
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="app" v-cloak>
+    <h1>Hello, {{ name }}</h1>
+    <input type="text" v-model="name"/>
+    
+    <br/><br/>
+    
+    <span>
+      <input type="checkbox" v-model="isShowVue"/>
+      <span v-if="isShowVue">보일랑</span>
+      <span v-else>말랑</span>
+    </span><br/>
+    <img :src="isShowVue ? vueLogo.url : ''" :width="vueLogo.width" />
+  </div>
+  
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: 'iskwon',
+        isShowVue: true,
+        vueLogo: {
+          url: 'https://kr.vuejs.org/images/logo.png',
+          width: 100
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
