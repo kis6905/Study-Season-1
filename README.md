@@ -12,10 +12,11 @@ react, vue, angular, TypeScript, ECMA Script, npm, webpack, babel, PWA, node, ex
 ***
 
 ## 1주차 - Vue 기본
-#### 1. Vue js 란?
+#### 1. Vue 사용 가이드
 * Virtual DOM
-* Other Framework
-* 기본 문법
+* Directive
+* method, computed, watch
+* Lifecycle
 * Component
 #### 2. Practice
 * Vue로 TODO List Application 만들기
