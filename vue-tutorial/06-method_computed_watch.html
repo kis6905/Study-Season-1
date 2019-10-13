@@ -27,7 +27,7 @@
   
   <script>
     var app = new Vue({
-      el: '#app', 
+      el: '#app',
       data: {
         message: 'hi vue',
         message2: ''
@@ -48,9 +48,6 @@
         message (newValue) {
           console.log('watch message()')
           this.message2 = newValue.split('').reverse().join('')
-        },
-        message2 () {
-          console.log('watch message2()')
         }
       }
     })
