@@ -7,14 +7,15 @@
 
   <style>
     [v-cloak] {
-      display: none;
+      display: none
     }
   </style>
 </head>
 <body>
   
   <div id="app" v-cloak>
-    
+    <input type="text" v-model="name"><br/>
+    {{ name }}
   </div>
   
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -22,11 +23,42 @@
   <script>
     var app = new Vue({
       el: '#app', 
-      data: {
+      data () {
+        return {
+          name: 'iskwon'
+        }
       },
       methods: {
-      }
-    });
+        init () {
+          console.log('init')
+        }
+      },
+      beforeCreate () {
+        console.log('beforeCreate', this.name)
+      },
+      created () {
+        console.log('created', this.name)
+        this.init()
+      },
+      beforeMount () {
+        console.log('beforeMount')
+      },
+      mounted () {
+        console.log('mounted')
+      },
+      beforeUpdate () {
+        console.log('beforeUpdate')
+      },
+      updated () {
+        console.log('updated')
+      },
+      beforeMount () {
+        console.log('beforeMount')
+      },
+      destroyed () {
+        console.log('destroyed')
+      },
+    })
   </script>
 
 </body>
