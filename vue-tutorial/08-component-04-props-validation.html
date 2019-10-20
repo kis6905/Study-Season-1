@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue Tutorial ch08</title>
+</head>
+<body>
+  
+  <div id="app">
+    부모 message: {{ message }}
+    <hr>
+    <my-component :message="message"></my-component>
+  </div>
+  
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+  <script>
+
+    Vue.component('my-component', {
+      template: `
+        <div>
+          {{ message }}
+          <br/>
+          하하하
+        </div>
+      `,
+      props: {
+        message: {
+          type: String,
+          required: true,
+          validator: function (value) {
+            return value.indexOf('asdsad') !== -1
+          }
+        }
+      },
+      data () {
+        return {
+        }
+      },
+      methods: {
+        increaseCount () {
+          this.increaseTotalCount(this.count++)
+        }
+      }
+    })
+
+    var app = new Vue({
+      el: '#app', 
+      data: {
+        message: 'hi man syncing synced'
+      },
+      methods: {
+      }
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue Tutorial ch08</title>
+</head>
+<body>
+  
+  <div id="app">
+    {{ message }}
+    <hr>
+    <my-component></my-component><br/>
+    <my-component></my-component><br/>
+    <my-component></my-component><br/>
+  </div>
+
+  <div id="app2">
+    app2!
+    <my-component></my-component>
+  </div>
+  
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+  <script>
+
+    const myComponent = {
+      template: `
+        <div>
+          count: {{ count }}
+          <button type="button" @click="increseCount">증가</button>
+        </div>
+      `,
+      data () {
+        return {
+          count: 0
+        }
+      },
+      methods: {
+        increseCount: function (event) {
+          this.count++
+        }
+      }
+    }
+
+    // Vue.component('my-component', myComponent)
+
+    var app = new Vue({
+      el: '#app',
+      componets: {
+        myComponent: myComponent
+      },
+      data: {
+        message: '부모 메시지'
+      },
+      methods: {
+      }
+    })
+
+    var app2 = new Vue({
+      el: '#app2',
+      componets: {
+        myComponent: myComponent
+      },
+      data: {
+        message: '부모 메시지2'
+      },
+      methods: {
+      }
+    })
+  </script>
+
+</body>
+</html>

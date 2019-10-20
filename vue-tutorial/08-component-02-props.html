@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue Tutorial ch08</title>
+</head>
+<body>
+  
+  <div id="app">
+    {{ message }}
+    <hr>
+    <my-component v-bind:parent-message="message"></my-component>
+  </div>
+  
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+  <script>
+
+    Vue.component('my-component', {
+      template: `
+        <div>
+          <div>{{ parentMessage }}</div><br/>
+        </div>
+      `,
+      props: ['parentMessage'],
+      data () {
+        return {
+          count: 0
+        }
+      },
+      created: function () {
+        console.log(this.parentMessage)
+      },
+      methods: {
+        increseCount: function (event) {
+          this.count++
+        }
+      }
+    })
+
+    var app = new Vue({
+      el: '#app', 
+      data: {
+        message: '부모의 메시지'
+      },
+      methods: {
+        
+      }
+    })
+  </script>
+
+</body>
+</html>
