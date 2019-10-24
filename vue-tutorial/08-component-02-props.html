@@ -10,7 +10,7 @@
   <div id="app">
     {{ message }}
     <hr>
-    <my-component v-bind:parent-message="message"></my-component>
+    <my-component :parent-message="message" v-on:change-message="changeMessage"></my-component>
   </div>
   
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -21,12 +21,15 @@
       template: `
         <div>
           <div>{{ parentMessage }}</div><br/>
+          <input type="text" v-model="message"><br/>
+          <button v-on:click="handleChangeMessage">반영</button>
         </div>
       `,
       props: ['parentMessage'],
       data () {
         return {
-          count: 0
+          count: 0,
+          message: ''
         }
       },
       created: function () {
@@ -35,6 +38,15 @@
       methods: {
         increseCount: function (event) {
           this.count++
+        },
+        handleChangeMessage (event) {
+          this.$emit('change-message', this.message)
+        }
+      },
+      watch: {
+        message () {
+          console.log('watch', this.message)
+          this.$emit('changeMessage', [this.message])
         }
       }
     })
@@ -45,7 +57,10 @@
         message: '부모의 메시지'
       },
       methods: {
-        
+        changeMessage (message) {
+          console.log('changeMessage', message)
+          this.message = message
+        }
       }
     })
   </script>
