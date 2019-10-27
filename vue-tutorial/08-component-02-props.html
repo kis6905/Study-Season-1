@@ -42,12 +42,6 @@
         handleChangeMessage (event) {
           this.$emit('change-message', this.message)
         }
-      },
-      watch: {
-        message () {
-          console.log('watch', this.message)
-          this.$emit('changeMessage', [this.message])
-        }
       }
     })
 

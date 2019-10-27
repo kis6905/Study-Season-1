@@ -6,47 +6,79 @@
   <title>Vue Tutorial ch09</title>
 
   <style>
-
+    #app {
+      text-align: center;
+      padding-top: 10rem;
+    }
   </style>
 </head>
 <body>
   
   <div id="app">
     <h2>할일 메모장</h2>
-    
+    <todo-input @add-todo="addTodo"></todo-input>
+    <todo-list :todo-list="todoList"></todo-list>
   </div>
   
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
   <script>
-
-    const myComponent = {
+    Vue.component('TodoInput',  {
       template: `
         <div>
-          <h2></h2>
+          <input type="text" v-model="todoText">
+          <button type="button" @click="saveTodo">저장</button>
         </div>
       `,
+      data () {
+        return {
+          todoText: ''
+        }
+      },
+      methods: {
+        saveTodo () {
+          this.$emit('add-todo', this.todoText)
+          this.todoText = ''
+        }
+      }
+    })
+
+    Vue.component('TodoList',  {
+      template: `
+        <div style="width: 200px;">
+          <ol>
+            <li v-for="todo in todoList" :key="todo.id">{{ todo.text }}</li>
+          </ol>
+        </div>
+      `,
+      props: {
+        todoList: {
+          type: Array
+        }
+      },
       data () {
         return {
         }
       },
       methods: {
       }
-    }
-
-    Vue.component('my-component', myComponent)
+    })
 
     var app = new Vue({
       el: '#app',
-      componets: {
-        myComponent: myComponent
-      },
       data () {
         return {
-
+          todoList: []
         }
       },
       methods: {
+        addTodo (todoText) {
+          let maxId = this.todoList
+                            .map((todo) => todo.id)
+                            .reduce((accumulator, current) => Math.max(current, accumulator), 0)
+          this.todoList.push({ id: ++maxId, text: todoText })
+          console.log(this.todoList)
+        }
       }
     })
 
