@@ -3,51 +3,81 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+  <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
+  <link rel="stylesheet" href="https://unpkg.com/vue-material/dist/vue-material.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/vue-material/dist/theme/default.css">
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-material"></script>
+
   <title>Vue Tutorial ch09</title>
 
   <style>
     #app {
-      text-align: center;
-      padding-top: 10rem;
+      padding-top: 30px;
+      padding-left: 20px;
     }
   </style>
 </head>
 <body>
   
   <div id="app">
-    <h2>할일 메모장</h2>
+    <span class="md-title">TODO List</span>
     <todo-input @add-todo="addTodo"></todo-input>
-    <todo-list :todo-list="todoList"></todo-list>
+    <todo-list :todo-list="todoList" @remove-todo="removeTodo"></todo-list>
   </div>
   
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-
   <script>
-    Vue.component('TodoInput',  {
+    Vue.use(VueMaterial.default)
+
+    Vue.component('TodoInput', {
       template: `
         <div>
-          <input type="text" v-model="todoText">
-          <button type="button" @click="saveTodo">저장</button>
+          <div class="md-layout md-gutter">
+            <div class="md-layout-item">
+              <md-field>
+                <label>할일</label>
+                <md-input v-model="todoText"></md-input>
+                <span class="md-helper-text"></span>
+              </md-field>
+            </div>
+            <div class="md-layout-item">
+              <md-button class="md-raised md-primary" @click="saveTodo">저장</md-button>
+            </div>
+          </div>
+          <br/>
+          <span v-if="!isValidTodoText" style="color: red;">할일을 적어주세요!</span>
         </div>
       `,
       data () {
         return {
-          todoText: ''
+          todoText: '',
+          isValidTodoText: true
         }
       },
       methods: {
         saveTodo () {
+          if (!this.todoText) {
+            this.isValidTodoText = false
+            return false
+          }
           this.$emit('add-todo', this.todoText)
           this.todoText = ''
+          this.isValidTodoText = true
         }
       }
     })
 
-    Vue.component('TodoList',  {
+    Vue.component('TodoList', {
       template: `
         <div style="width: 200px;">
           <ol>
-            <li v-for="todo in todoList" :key="todo.id">{{ todo.text }}</li>
+            <li v-for="todo in todoList" :key="todo.id">
+              {{ todo.text }}
+              <button @click="removeTodo(todo.id, $event)">X</button>
+            </li>
           </ol>
         </div>
       `,
@@ -61,6 +91,9 @@
         }
       },
       methods: {
+        removeTodo (todoId, event) {
+          this.$emit('remove-todo', todoId)
+        }
       }
     })
 
@@ -78,6 +111,10 @@
                             .reduce((accumulator, current) => Math.max(current, accumulator), 0)
           this.todoList.push({ id: ++maxId, text: todoText })
           console.log(this.todoList)
+        },
+        removeTodo (todoId, event) {
+          console.log(todoId)
+          this.todoList = this.todoList.filter(todo => todo.id != todoId)
         }
       }
     })
