@@ -4,7 +4,7 @@
 
 ***
 
-## 1주차(Prequel)
+## 0주차(Prequel)
 #### 1. 커리큘럼 소개
 #### 2. Vue.js, Spring-boot, JPA란?
 #### 3. ECMAScript6
