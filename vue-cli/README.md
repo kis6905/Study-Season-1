@@ -38,4 +38,4 @@ $ vue create {프로젝트명}
  $ npm run serve
 ```
 localhost:8080 접속 시 아래와 같이 뜨면 정상이다.
-![](https://github.com/kis6905/Study-Season-1/tree/master/vue-cli/docs/vue-cli-init.png)
+![](./docs/vue-cli-init.png)
