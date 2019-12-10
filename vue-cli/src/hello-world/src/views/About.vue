@@ -7,12 +7,6 @@
 <script>
 export default {
   name: 'about',
-  created () {
-    console.log('about created')
-  },
-  destroyed () {
-    console.log('about destroyed')
-  },
   methods: {
   }
 }

@@ -12,12 +12,18 @@
 </template>
 
 <script>
+// import { mapGetters } from 'vuex'
+import { mapGetters } from '@/store/my'
+
 export default {
   name: 'Header',
   computed: {
-    isMain () {
-      return this.$store.getters.isMain
-    }
+    // isMain () {
+    //   return this.$store.getters.isMain
+    // },
+    ...mapGetters({
+      isMain: 'isMain'
+    })
   },
   methods: {
     handleClickPage (event) {

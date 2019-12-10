@@ -12,6 +12,8 @@
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
 import Header from '@/components/Header.vue'
+// import { mapMutations, mapActions } from 'vuex'
+import { mapMutations, mapActions } from '@/store/my'
 
 export default {
   name: 'home',
@@ -23,20 +25,21 @@ export default {
     return {
     }
   },
-  created () {
-    console.log('home created')
-  },
-  destroyed () {
-    console.log('home destroyed')
-  },
   methods: {
+    ...mapMutations({
+      setMain: 'setMain'
+    }),
+    ...mapActions({
+      setMainAction: 'setMainAction'
+    }),
     handleClickPage (path) {
-      // this.$store.commit('setMain', false)
-      this.$store.dispatch('setMain', { isMain: false })
+      // this.$store.dispatch('setMain', { isMain: false })
+      this.setMainAction({ isMain: false })
       this.$router.push(path)
     },
     handleClickBack () {
-      this.$store.commit('setMain', true)
+      // this.$store.commit('setMain', true)
+      this.setMain(true)
       this.$router.go(-1)
     }
   }
