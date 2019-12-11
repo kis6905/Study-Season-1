@@ -14,6 +14,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 import Header from '@/components/Header.vue'
 // import { mapMutations, mapActions } from 'vuex'
 import { mapMutations, mapActions } from '@/store/my'
+import ApiMixin from '@/mixins/ApiMixin'
 
 export default {
   name: 'home',
@@ -21,9 +22,14 @@ export default {
     HelloWorld,
     Header
   },
+  mixins: [ApiMixin],
   data () {
     return {
     }
+  },
+  async created () {
+    const response = await this.getUser()
+    console.log(response.data)
   },
   methods: {
     ...mapMutations({
