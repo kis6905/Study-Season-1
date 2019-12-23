@@ -9,19 +9,19 @@ export default {
   },
   getters: {
     isMain (state) {
-      console.log('getters isMain')
+      console.log('my getters isMain')
       return state.main
     }
   },
   mutations: {
     setMain (state, isMain) {
-      console.log('mutations setMain')
+      console.log('my mutations setMain')
       state.main = isMain
     }
   },
   actions: {
     setMainAction (context, payload) {
-      console.log('actions setMain')
+      console.log('my actions setMain')
       context.state.main = payload.isMain
     }
   }
