@@ -1,0 +1,17 @@
+1. 영속성
+
+2. ManyToOne, OneToMany, ManyToMany
+   - LAZY
+   - 순환참조 solution
+
+3. JQPL
+   - 동적쿼리, 정적쿼리 차이점
+   - @Query 예제
+     * parameter binding(낱개, 객체)
+     * nativeQuery
+   - 프로젝션 설명
+     * Entity - 영속성 유지 O
+     * Embedded - 영속성 유지 X
+     * 컬럼 낱개 조회 - 영속성 유지 X
+
+4. QueryDSL 같은 라이브러리
