@@ -7,7 +7,7 @@
 ## 1주차
 #### 1. 커리큘럼 소개
 #### 2. Vue.js란?
-#### 3. ES(ECMA Script) 2015
+#### 3. ES(ECMA Script) 2015+
 
 ***
 
@@ -27,7 +27,7 @@
 
 ## 4주차 - Vue 심화1
 #### 1. vue-cli
-#### 2. CSS preprocessor(sass, less) [참고 Link](https://findawayer.tistory.com/entry/Sass-LESS-%EB%93%B1%EC%9D%84-%EA%B6%8C%EC%9E%A5%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0)
+#### 2. CSS preprocessor(sass, less) [참고](https://findawayer.tistory.com/entry/Sass-LESS-%EB%93%B1%EC%9D%84-%EA%B6%8C%EC%9E%A5%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0)
 #### 3. vue-router
 #### 4. vuex
 
