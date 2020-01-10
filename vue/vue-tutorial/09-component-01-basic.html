@@ -23,6 +23,7 @@
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   
   <script>
+    const myData = { count: 0 }
 
     const myComponent = {
       template: `
@@ -39,16 +40,24 @@
       methods: {
         increseCount: function (event) {
           this.count++
+          eventBus.$emit('my-event', { a: 1, b: 2 })
         }
       }
     }
 
     // Vue.component('my-component', myComponent)
 
+    const eventBus = new Vue();
+
     var app = new Vue({
       el: '#app',
       components: {
         myComponent: myComponent
+      },
+      created () {
+        eventBus.$on('my-event', function (param) {
+          console.log('myEvent()', param)
+        })
       },
       data: {
         message: '부모 메시지'

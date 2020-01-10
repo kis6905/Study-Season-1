@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vue Tutorial ch05</title>
+
+  <style>
+    .red {
+      color: red;
+    }
+    .bold {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="app">
+    <div :class="{ red: isRed }" id="myDiv">{{ msg }}</div>
+
+    <div :class="classObject">{{ msg }}</div>
+
+    <div :class="classArray">{{ msg }}</div>
+
+    <div :style="{ color: 'blue', backgroundColor: 'yellow', fontWeight: 'bold' }">{{ msg }}</div>
+  </div>
+  
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+  <script>
+    var app = new Vue({
+      el: '#app', 
+      data: {
+        msg: 'hello vue!',
+        isRed: true,
+        classObject: {
+          red: true,
+          bold: this.msg
+        },
+        classArray: ['red', 'bold']
+      }
+    });
+  </script>
+
+</body>
+</html>
