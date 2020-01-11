@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>TODO List</h1>
+      <input-component :save="save"></input-component>
+      <list-component :todo-list="todoList"></list-component>
+    </div>
+  </body>
+
+  <script>
+    const inputComponent = {
+      template: `
+        <div>
+          <input type="text" v-model="todoText">
+          <button @click="saveTodo">저장</button>
+        </div>
+      `,
+      props: {
+        save: {
+          type: Function
+        }
+      },
+      data () {
+        return {
+          todoText: ''
+        }
+      },
+      methods: {
+        saveTodo () {
+          this.save(this.todoText);
+          this.todoText = '';
+        }
+      }
+    }
+
+    const listComponent = {
+      template: `
+        <div>
+          <ul>
+            <li v-for="(todo, index) in todoList" :data-todo-id="todo.id">
+              {{ index }}. {{ todo.text }}
+              <button @click="modifyTodo">수정</button>
+              <button @click="removeTodo">X</button>
+            </li>
+          </ul>
+        </div>
+      `,
+      props: {
+        'todoList': {
+          type: Array
+        }
+      },
+      data () {
+        return {
+        }
+      },
+      methods: {
+        removeTodo (event) {
+          // 삭제
+          const todoId = event.currentTarget.parentElement.dataset.todoId;
+
+          // 숙제
+        },
+        modifyTodo (event) {
+          // 수정
+          const todoId = event.currentTarget.parentElement.dataset.todoId;
+
+          // 숙제
+        }
+      }
+    }
+
+    const app = new Vue({
+      el: '#app',
+      components: {
+        inputComponent: inputComponent,
+        listComponent: listComponent
+      },
+      data: {
+        todoList: [],
+        maxId: 0
+      },
+      methods: {
+        save (todoText) {
+          this.todoList.push({ id: this.maxId++, text: todoText })
+        },
+        modify () {
+
+        },
+        remove () {
+
+        }
+      }
+    })
+  </script>
+</html>
