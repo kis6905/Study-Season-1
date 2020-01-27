@@ -1,0 +1,18 @@
+- vscode extensions
+  > vetur
+  > bracket pair colorizer
+  > indent-rainbow
+
+- node 설치
+  > node에 대한 간략한 설명
+     - 크롬 v8 javascript 엔진으로 빌드된 런타임, 즉 javascript 프로그램 실행 환경
+     - webpack, babel을 이용해 front-end 개발도 가능하다.
+       webpack 설명, babel 설명
+     - 결국 vue-cli 란 것도 npm에 올라가있는 javascript 프로그램이다.
+
+- vue-cli 설명 후 설치
+  > 디렉토리 구조
+  > serve, build, lint
+  > build 보여주고, bundle 파일 확인
+
+- sass, router, vuex
